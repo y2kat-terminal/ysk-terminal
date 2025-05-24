@@ -22,6 +22,7 @@ interface ArtGalleryProps {
 }
 
 const artCollection = [
+  // These are ordered from newest to oldest
   {
     id: "CHRONOCAT_001",
     date: "Jan 1, 2000",
