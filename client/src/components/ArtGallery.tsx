@@ -1,4 +1,9 @@
 import React from "react";
+// Import all available Y2KAT images
+import ysk2 from "../assets/ysk2.png";
+import ysk3 from "../assets/ysk3.png";
+import ysk4 from "../assets/ysk4.png";
+import ysk5 from "../assets/ysk5.png";
 import ysk6 from "../assets/ysk6.png";
 import ysk7 from "../assets/ysk7.png";
 import ysk8 from "../assets/ysk8.png";
@@ -101,29 +106,63 @@ const artCollection = [
     description: "The glitch that introduced Y2KAT into global systems",
     image: ysk6,
   },
+  {
+    id: "CHRONOCAT_013",
+    date: "Dec 24, 1999",
+    title: "Pre-Millennium Sentinel",
+    description: "Y2KAT moments before the infamous Y2K transition",
+    image: ysk5,
+  },
+  {
+    id: "CHRONOCAT_014",
+    date: "Feb 14, 2000",
+    title: "Digital Love Virus",
+    description: "The cat that hacked Valentine's Day networks",
+    image: ysk4,
+  },
+  {
+    id: "CHRONOCAT_015",
+    date: "Mar 3, 2000",
+    title: "Binary Whisper",
+    description: "Y2KAT's secret communication with early AI systems",
+    image: ysk3,
+  },
+  {
+    id: "CHRONOCAT_016",
+    date: "Apr 1, 2000",
+    title: "April Fools Protocol",
+    description: "The day Y2KAT briefly took control of all email systems",
+    image: ysk2,
+  },
 ];
 
 const ArtGallery: React.FC<ArtGalleryProps> = ({ onClose }) => {
   return (
-    <div id="gallery" className="fixed inset-0 z-40 bg-terminal-black bg-opacity-95 flex flex-col items-center justify-center p-4 overflow-auto">
-      <div className="max-w-6xl w-full">
-        <h2 className="text-3xl text-terminal-pink mb-4 border-b border-terminal-green pb-2">Y2KAT COLLECTION</h2>
+    <div id="gallery" className="fixed inset-0 z-40 bg-terminal-black bg-opacity-95 flex items-center justify-center p-2 overflow-hidden">
+      <div className="max-w-7xl w-full h-[90vh] flex flex-col">
+        <div className="flex justify-between items-center mb-4 border-b border-terminal-green pb-2">
+          <h2 className="text-3xl text-terminal-pink">Y2KAT COLLECTION</h2>
+          <p className="text-terminal-gray text-sm">CHRONOCAT ARCHIVES // 1999-2000</p>
+        </div>
         
-        <div className="gallery-container pb-4 mb-4">
+        <div className="gallery-container flex-grow overflow-y-auto pb-4 mb-4 pr-2">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {artCollection.map((art) => (
-              <div key={art.id} className="art-item border border-terminal-green p-2 transition-all hover:border-terminal-pink">
+              <div 
+                key={art.id} 
+                className="art-item border border-terminal-green p-2 transition-all hover:border-terminal-pink hover:bg-terminal-black hover:bg-opacity-50 transform hover:-translate-y-1"
+              >
                 <div className="w-full aspect-square bg-terminal-gray bg-opacity-10 mb-2 flex items-center justify-center overflow-hidden">
                   <img 
                     src={art.image} 
                     alt={art.title} 
-                    className="w-full h-full object-cover" 
+                    className="w-full h-full object-contain" 
                   />
                 </div>
                 <div className="p-2">
-                  <h3 className="text-terminal-pink">[{art.id}]</h3>
+                  <h3 className="text-terminal-pink font-bold">[{art.id}]</h3>
                   <p className="text-xs text-terminal-gray">Corrupted on {art.date}</p>
-                  <p className="text-sm">{art.title}</p>
+                  <p className="text-sm font-bold">{art.title}</p>
                   <p className="text-xs text-terminal-gray mt-1">{art.description}</p>
                 </div>
               </div>
@@ -131,12 +170,12 @@ const ArtGallery: React.FC<ArtGalleryProps> = ({ onClose }) => {
           </div>
         </div>
         
-        <div className="flex justify-center">
+        <div className="flex justify-center border-t border-terminal-green pt-4">
           <button 
             onClick={onClose}
-            className="text-terminal-pink border border-terminal-pink px-6 py-2 hover:bg-terminal-pink hover:text-terminal-black transition-colors"
+            className="text-terminal-pink border-2 border-terminal-pink px-8 py-2 hover:bg-terminal-pink hover:text-terminal-black transition-colors font-bold tracking-wider"
           >
-            CLOSE GALLERY
+            [ CLOSE GALLERY ]
           </button>
         </div>
       </div>
