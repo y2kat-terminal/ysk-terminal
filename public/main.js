@@ -1,37 +1,4 @@
-// ASCII Art for the cat
-const catAscii = `/\\_/\\
-( o.o )
-> ^ <
-MEOW 2000`;
-
-// Boot messages
-const bootMessages = [
-  "booting Y2KAT.exe...",
-  "accessing ./memories",
-  "404 errors... detected",
-  "System Restored from Jan 1, 2000",
-  "Initializing digital whiskers...",
-  "Calibrating quantum purr engine...",
-  "WARNING: Time paradox detected",
-  "Y2KAT activation sequence complete"
-];
-
-// Random cat thoughts
-const catThoughts = [
-  "I wonder if humans realize I caused the Y2K bug on purpose...",
-  "Corrupting blockchain is easier than catching a laser pointer.",
-  "Time is just a scratching post for beings like me.",
-  "Humans think they invented the internet. How adorable.",
-  "I've existed in 17 timelines simultaneously. This one is my favorite to corrupt.",
-  "Digital mice taste better than real ones.",
-  "Sometimes I corrupt files just to watch the humans panic.",
-  "Meow.exe has encountered a quantum error. Good.",
-  "Your cryptocurrencies are just my digital toys.",
-  "I've been deleting system32 since before it was cool."
-];
-
-// Main function to initialize the page
-function initializePage() {
+document.addEventListener('DOMContentLoaded', function() {
   const root = document.getElementById('root');
   
   // Create CRT and scanline effects
@@ -48,107 +15,128 @@ function initializePage() {
   mainContainer.className = 'main-container';
   root.appendChild(mainContainer);
   
-  // Create main title
+  // Add title and subtitle
   const title = document.createElement('h1');
   title.className = 'main-title glitch-text';
   title.textContent = 'Y2KAT.exe';
   mainContainer.appendChild(title);
   
-  // Create subtitle
   const subtitle = document.createElement('p');
   subtitle.className = 'subtitle';
   subtitle.textContent = 'CYBERFELINE SYSTEM v2.0.0.0';
   mainContainer.appendChild(subtitle);
   
-  // Create content
+  // Add ASCII art
+  const asciiArt = document.createElement('div');
+  asciiArt.className = 'ascii-art';
+  asciiArt.innerHTML = `/\\_/\\<br>
+( o.o )<br>
+> ^ <<br>
+MEOW 2000`;
+  mainContainer.appendChild(asciiArt);
+  
+  // Add content
   const content = document.createElement('div');
   content.className = 'content';
+  content.innerHTML = `
+    <p class="command-line">whois Y2KAT</p>
+    <p>Y2KAT - CHRONOLOGICAL FELINE ENTITY</p>
+    <p style="color: hsl(var(--terminal-gray))">VERSION: 2.0.0.0</p>
+    <p style="color: hsl(var(--terminal-gray))">ORIGIN: JAN 1, 2000 TEMPORAL ANOMALY</p>
+    <p style="margin: 1rem 0">A digital entity that emerged during the Y2K transition. Part cat, part chronological glitch, Y2KAT exists between the digital and physical realms, corrupting systems and timelines for its own amusement.</p>
+    <p style="color: hsl(var(--terminal-pink))">WARNING: Y2KAT has been known to manipulate blockchain technology and digital art.</p>
+    
+    <p class="command-line" style="margin-top: 2rem">y2kat.predict()</p>
+    <p style="color: hsl(var(--terminal-pink))">EXECUTING PREDICTION ALGORITHM...</p>
+    <p style="margin: 1rem 0">The blockchain fears what hides between 1999 and 2000.</p>
+    <p style="color: hsl(var(--terminal-gray)); font-size: 0.9rem;">Prophecy generated from temporal data fragments</p>
+  `;
   mainContainer.appendChild(content);
   
-  // Display boot messages
-  const bootSequence = document.createElement('div');
-  bootSequence.className = 'boot-sequence';
-  content.appendChild(bootSequence);
-  
-  // Add boot messages with a typing effect
-  let delay = 0;
-  bootMessages.forEach((message, index) => {
-    setTimeout(() => {
-      const bootLine = document.createElement('p');
-      bootLine.className = message.includes('WARNING') || message.includes('404') 
-        ? 'terminal-line typing-animation text-pink' 
-        : 'terminal-line typing-animation';
-      bootLine.textContent = message;
-      bootLine.style.color = message.includes('WARNING') || message.includes('404') 
-        ? 'hsl(300, 100%, 50%)' 
-        : 'hsl(120, 100%, 50%)';
-      bootSequence.appendChild(bootLine);
-      
-      // When all messages are displayed, show the ASCII art and buttons
-      if (index === bootMessages.length - 1) {
-        setTimeout(() => {
-          displayMainContent(content);
-        }, 1000);
-      }
-    }, delay);
-    delay += 800;
-  });
-  
-  // Create footer
-  const footer = document.createElement('div');
-  footer.className = 'footer';
-  footer.innerHTML = `
-    <p>© 2000-${new Date().getFullYear()} CHRONOCAT INDUSTRIES</p>
-    <p>ALL RIGHTS RESERVED & SOME RIGHTS CORRUPTED</p>
-    <p class="cat-thought" style="margin-top: 1rem; font-style: italic;">${getRandomCatThought()}</p>
-  `;
-  root.appendChild(footer);
-  
-  // Update cat thought every 10 seconds
-  setInterval(() => {
-    document.querySelector('.cat-thought').textContent = getRandomCatThought();
-  }, 10000);
-}
-
-// Function to display main content after boot sequence
-function displayMainContent(container) {
-  // Display ASCII art
-  const asciiArt = document.createElement('pre');
-  asciiArt.className = 'ascii-art';
-  asciiArt.textContent = catAscii;
-  container.appendChild(asciiArt);
-  
-  // Create buttons
-  const buttonsContainer = document.createElement('div');
-  buttonsContainer.style.display = 'flex';
-  buttonsContainer.style.justifyContent = 'center';
-  buttonsContainer.style.gap = '1rem';
-  buttonsContainer.style.marginTop = '2rem';
-  container.appendChild(buttonsContainer);
-  
-  // Launch Terminal button
+  // Add launch button
   const launchButton = document.createElement('button');
   launchButton.className = 'btn';
   launchButton.textContent = 'LAUNCH TERMINAL';
-  launchButton.addEventListener('click', () => {
-    window.location.href = 'https://y2kat-terminal.replit.app/';
+  launchButton.addEventListener('click', function() {
+    window.location.href = 'app/';
   });
-  buttonsContainer.appendChild(launchButton);
+  mainContainer.appendChild(launchButton);
   
-  // GitHub Repo button
-  const githubButton = document.createElement('button');
-  githubButton.className = 'btn';
-  githubButton.textContent = 'VIEW SOURCE CODE';
-  githubButton.addEventListener('click', () => {
-    window.open('https://github.com/y2kat-terminal/y2k-terminal', '_blank');
+  // Add footer
+  const footer = document.createElement('div');
+  footer.className = 'footer';
+  footer.innerHTML = `
+    <p>© 2000-2023 CHRONOCAT INDUSTRIES</p>
+    <p>ALL RIGHTS RESERVED & SOME RIGHTS CORRUPTED</p>
+    <p style="margin-top: 1rem">Press the Konami Code: ↑ ↑ ↓ ↓ ← → ← → B A</p>
+  `;
+  root.appendChild(footer);
+  
+  // Simple Konami Code implementation
+  const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+  let konamiIndex = 0;
+  
+  document.addEventListener('keydown', function(e) {
+    if (e.key === konamiCode[konamiIndex]) {
+      konamiIndex++;
+      if (konamiIndex === konamiCode.length) {
+        activateKonamiCode();
+        konamiIndex = 0;
+      }
+    } else {
+      konamiIndex = 0;
+    }
   });
-  buttonsContainer.appendChild(githubButton);
-}
-
-// Function to get a random cat thought
-function getRandomCatThought() {
-  return catThoughts[Math.floor(Math.random() * catThoughts.length)];
-}
-
-// Initialize the page when the DOM is loaded
-document.addEventListener('DOMContentLoaded', initializePage);
+  
+  function activateKonamiCode() {
+    // Create secret modal
+    const secretModal = document.createElement('div');
+    secretModal.style.position = 'fixed';
+    secretModal.style.top = '0';
+    secretModal.style.left = '0';
+    secretModal.style.width = '100%';
+    secretModal.style.height = '100%';
+    secretModal.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+    secretModal.style.display = 'flex';
+    secretModal.style.alignItems = 'center';
+    secretModal.style.justifyContent = 'center';
+    secretModal.style.zIndex = '1000';
+    
+    const secretContent = document.createElement('div');
+    secretContent.style.maxWidth = '600px';
+    secretContent.style.padding = '2rem';
+    secretContent.style.border = '2px solid hsl(var(--terminal-pink))';
+    secretContent.style.backgroundColor = 'hsl(var(--terminal-black))';
+    
+    secretContent.innerHTML = `
+      <h2 style="font-size: 2rem; color: hsl(var(--terminal-pink)); margin-bottom: 1rem;">SECRET LOGS ACCESSED</h2>
+      <p style="color: hsl(var(--terminal-green)); margin-bottom: 1rem;">Y2KAT LOG #42: I have successfully corrupted the Ethereum blockchain. Humans still think it was their idea.</p>
+      <div class="ascii-art" style="color: hsl(var(--terminal-pink)); margin: 1.5rem 0;">
+        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░<br>
+        ░░░░░░░░░░░▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄░░░░░<br>
+        ░░░░░░░░▄▀▀▀░░░░░░░░░░░░░░░░▀▀▄░░░░<br>
+        ░░░░░░▄▀░░░░░░░░░░░░░░░░░░░░░░▀▄░░░<br>
+        ░░░░░▄▀░░░▄▄▄▄▄▄▀▀▀▀▀▀▀▄▄▄▄▄▄░░█░░░<br>
+        ░░░░█░░░█░░░░░░░░░░░░░░░░░░░░█░█░░░<br>
+        ░░░░▀▄░░▀░░░░░░░░██░░░▄█░░░░░░▀█░░░<br>
+        ░░░░░░▀▄░░░░░░░░░░░▄▄▄░░░░░░░░█░░░░<br>
+        ░░░░░░░░▀▄▄░░░░░░░░░░░░░░░░░▄▀░░░░░<br>
+        ░░░░░░░░░░░▀▀▄▄▄▄▄▄▄▄▄▄▄▄▄▀▀░░░░░░░<br>
+        ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+      </div>
+      <p style="color: hsl(var(--terminal-gray));">Y2KAT LOG #1337: The humans suspect nothing. They think I'm just an art project, but I've been altering their timeline since 2000.</p>
+      <div style="margin-top: 2rem; border: 1px solid hsl(var(--terminal-green)); padding: 1rem;">
+        <p style="color: hsl(var(--terminal-pink)); margin-bottom: 0.5rem;">[CORRUPTED_MEME.gif]</p>
+        <p style="font-size: 0.9rem; color: hsl(var(--terminal-gray));">I can has blockchain? All your ETH are belong to me.</p>
+      </div>
+      <button id="close-secret" style="margin-top: 2rem; background: transparent; border: 2px solid hsl(var(--terminal-pink)); color: hsl(var(--terminal-pink)); padding: 0.5rem 1.5rem; font-family: 'VT323', monospace; cursor: pointer;">RETURN TO TERMINAL</button>
+    `;
+    
+    secretModal.appendChild(secretContent);
+    document.body.appendChild(secretModal);
+    
+    document.getElementById('close-secret').addEventListener('click', function() {
+      document.body.removeChild(secretModal);
+    });
+  }
+});
