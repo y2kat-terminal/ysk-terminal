@@ -1,10 +1,37 @@
-// ASCII art for Y2KAT
+// ASCII Art for the cat
 const catAscii = `/\\_/\\
 ( o.o )
 > ^ <
 MEOW 2000`;
 
-document.addEventListener('DOMContentLoaded', () => {
+// Boot messages
+const bootMessages = [
+  "booting Y2KAT.exe...",
+  "accessing ./memories",
+  "404 errors... detected",
+  "System Restored from Jan 1, 2000",
+  "Initializing digital whiskers...",
+  "Calibrating quantum purr engine...",
+  "WARNING: Time paradox detected",
+  "Y2KAT activation sequence complete"
+];
+
+// Random cat thoughts
+const catThoughts = [
+  "I wonder if humans realize I caused the Y2K bug on purpose...",
+  "Corrupting blockchain is easier than catching a laser pointer.",
+  "Time is just a scratching post for beings like me.",
+  "Humans think they invented the internet. How adorable.",
+  "I've existed in 17 timelines simultaneously. This one is my favorite to corrupt.",
+  "Digital mice taste better than real ones.",
+  "Sometimes I corrupt files just to watch the humans panic.",
+  "Meow.exe has encountered a quantum error. Good.",
+  "Your cryptocurrencies are just my digital toys.",
+  "I've been deleting system32 since before it was cool."
+];
+
+// Main function to initialize the page
+function initializePage() {
   const root = document.getElementById('root');
   
   // Create CRT and scanline effects
@@ -19,62 +46,52 @@ document.addEventListener('DOMContentLoaded', () => {
   // Create main container
   const mainContainer = document.createElement('div');
   mainContainer.className = 'main-container';
+  root.appendChild(mainContainer);
   
-  // Create title and subtitle
+  // Create main title
   const title = document.createElement('h1');
   title.className = 'main-title glitch-text';
   title.textContent = 'Y2KAT.exe';
+  mainContainer.appendChild(title);
   
+  // Create subtitle
   const subtitle = document.createElement('p');
   subtitle.className = 'subtitle';
   subtitle.textContent = 'CYBERFELINE SYSTEM v2.0.0.0';
+  mainContainer.appendChild(subtitle);
   
   // Create content
   const content = document.createElement('div');
   content.className = 'content';
+  mainContainer.appendChild(content);
   
-  // Boot sequence text
-  const bootText = document.createElement('div');
-  bootText.innerHTML = `
-    <p>booting Y2KAT.exe...</p>
-    <p>accessing ./memories</p>
-    <p class="terminal-pink">404 errors... detected</p>
-    <p>System Restored from Jan 1, 2000</p>
-    <p>Initializing digital whiskers...</p>
-    <p>Calibrating quantum purr engine...</p>
-    <p class="terminal-pink">WARNING: Time paradox detected</p>
-    <p>Y2KAT activation sequence complete</p>
-  `;
+  // Display boot messages
+  const bootSequence = document.createElement('div');
+  bootSequence.className = 'boot-sequence';
+  content.appendChild(bootSequence);
   
-  // ASCII Art
-  const asciiArt = document.createElement('div');
-  asciiArt.className = 'ascii-art';
-  asciiArt.innerHTML = catAscii.replace(/\\n/g, '<br>');
-  
-  // Description
-  const description = document.createElement('div');
-  description.innerHTML = `
-    <p style="margin-top: 2rem;">Y2KAT is a retro-futuristic terminal experience featuring a cyber cat from the Y2K era.</p>
-    <p style="margin-top: 1rem;">With glitch aesthetics and interactive commands, explore the digital feline entity that emerged during the Y2K transition.</p>
-    <p style="margin-top: 1rem;">Type commands like <span style="color: hsl(300, 100%, 50%);">whois Y2KAT</span>, <span style="color: hsl(300, 100%, 50%);">y2kat.predict()</span>, and <span style="color: hsl(300, 100%, 50%);">show.collection()</span> to interact with the terminal.</p>
-    <p style="margin-top: 1rem;">Can you find the hidden Konami code easter egg?</p>
-  `;
-  
-  // Create launch button
-  const launchBtn = document.createElement('button');
-  launchBtn.className = 'btn';
-  launchBtn.textContent = 'LAUNCH TERMINAL';
-  launchBtn.addEventListener('click', () => {
-    window.location.href = 'https://y2kat-terminal.replit.app/';
-  });
-  
-  // Create GitHub button
-  const githubBtn = document.createElement('button');
-  githubBtn.className = 'btn';
-  githubBtn.style.marginTop = '1rem';
-  githubBtn.textContent = 'VIEW ON GITHUB';
-  githubBtn.addEventListener('click', () => {
-    window.open('https://github.com/yourusername/y2kat-terminal', '_blank');
+  // Add boot messages with a typing effect
+  let delay = 0;
+  bootMessages.forEach((message, index) => {
+    setTimeout(() => {
+      const bootLine = document.createElement('p');
+      bootLine.className = message.includes('WARNING') || message.includes('404') 
+        ? 'terminal-line typing-animation text-pink' 
+        : 'terminal-line typing-animation';
+      bootLine.textContent = message;
+      bootLine.style.color = message.includes('WARNING') || message.includes('404') 
+        ? 'hsl(300, 100%, 50%)' 
+        : 'hsl(120, 100%, 50%)';
+      bootSequence.appendChild(bootLine);
+      
+      // When all messages are displayed, show the ASCII art and buttons
+      if (index === bootMessages.length - 1) {
+        setTimeout(() => {
+          displayMainContent(content);
+        }, 1000);
+      }
+    }, delay);
+    delay += 800;
   });
   
   // Create footer
@@ -83,44 +100,55 @@ document.addEventListener('DOMContentLoaded', () => {
   footer.innerHTML = `
     <p>© 2000-${new Date().getFullYear()} CHRONOCAT INDUSTRIES</p>
     <p>ALL RIGHTS RESERVED & SOME RIGHTS CORRUPTED</p>
+    <p class="cat-thought" style="margin-top: 1rem; font-style: italic;">${getRandomCatThought()}</p>
   `;
-  
-  // Append all elements
-  content.appendChild(bootText);
-  content.appendChild(asciiArt);
-  content.appendChild(description);
-  
-  mainContainer.appendChild(title);
-  mainContainer.appendChild(subtitle);
-  mainContainer.appendChild(content);
-  mainContainer.appendChild(launchBtn);
-  mainContainer.appendChild(githubBtn);
-  
-  root.appendChild(mainContainer);
   root.appendChild(footer);
   
-  // Add styling for terminal colors
-  const style = document.createElement('style');
-  style.textContent = `
-    .terminal-pink {
-      color: hsl(300, 100%, 50%);
-    }
-    .terminal-green {
-      color: hsl(120, 100%, 50%);
-    }
-    .terminal-gray {
-      color: hsl(0, 0%, 67%);
-    }
-  `;
-  document.head.appendChild(style);
+  // Update cat thought every 10 seconds
+  setInterval(() => {
+    document.querySelector('.cat-thought').textContent = getRandomCatThought();
+  }, 10000);
+}
+
+// Function to display main content after boot sequence
+function displayMainContent(container) {
+  // Display ASCII art
+  const asciiArt = document.createElement('pre');
+  asciiArt.className = 'ascii-art';
+  asciiArt.textContent = catAscii;
+  container.appendChild(asciiArt);
   
-  // Type writer effect for boot sequence
-  const typeLines = bootText.querySelectorAll('p');
-  typeLines.forEach((line, index) => {
-    line.style.opacity = '0';
-    setTimeout(() => {
-      line.style.opacity = '1';
-      line.classList.add('typing-animation');
-    }, index * 800);
+  // Create buttons
+  const buttonsContainer = document.createElement('div');
+  buttonsContainer.style.display = 'flex';
+  buttonsContainer.style.justifyContent = 'center';
+  buttonsContainer.style.gap = '1rem';
+  buttonsContainer.style.marginTop = '2rem';
+  container.appendChild(buttonsContainer);
+  
+  // Launch Terminal button
+  const launchButton = document.createElement('button');
+  launchButton.className = 'btn';
+  launchButton.textContent = 'LAUNCH TERMINAL';
+  launchButton.addEventListener('click', () => {
+    window.location.href = 'https://y2kat-terminal.replit.app/';
   });
-});
+  buttonsContainer.appendChild(launchButton);
+  
+  // GitHub Repo button
+  const githubButton = document.createElement('button');
+  githubButton.className = 'btn';
+  githubButton.textContent = 'VIEW SOURCE CODE';
+  githubButton.addEventListener('click', () => {
+    window.open('https://github.com/y2kat-terminal/y2k-terminal', '_blank');
+  });
+  buttonsContainer.appendChild(githubButton);
+}
+
+// Function to get a random cat thought
+function getRandomCatThought() {
+  return catThoughts[Math.floor(Math.random() * catThoughts.length)];
+}
+
+// Initialize the page when the DOM is loaded
+document.addEventListener('DOMContentLoaded', initializePage);
