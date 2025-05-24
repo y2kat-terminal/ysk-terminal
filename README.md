@@ -1,21 +1,21 @@
-# Y2KAT - Retro-Futuristic Terminal Experience
+# Y2KAT - Retro-Futurist Terminal Experience
 
-![Y2KAT](public/assets/ysk17.png)
+A retro-futuristic, terminal-based web experience featuring Y2KAT with glitch aesthetics, interactive commands, and hidden features.
 
-Y2KAT is a retro-futuristic, terminal-based web experience featuring a cyber cat from the Y2K era. This interactive project combines nostalgic aesthetics with modern web technologies to create an immersive digital art experience.
+## Overview
+
+Y2KAT is a digital entity that emerged during the Y2K transition. This interactive terminal experience allows you to communicate with Y2KAT and discover its secrets through various commands and hidden features.
 
 ## Features
 
-- 🖥️ **Boot Sequence Animation**: Experience the nostalgic Y2K-era computer startup
-- 💻 **Interactive Terminal**: Type commands to interact with Y2KAT
-- 🎨 **Pixel Art Gallery**: View Y2KAT in various digital environments
-- 🔮 **Cryptic Prophecies**: Get unique predictions from the time-traveling cyber cat
-- 🕹️ **Easter Eggs**: Discover hidden features using the Konami code
-- 🔄 **System Crash Simulation**: Experience the Y2K bug firsthand
+- **Boot Animation**: Experience the Y2K-era cyberpunk boot sequence
+- **Interactive Terminal**: Type commands to interact with Y2KAT
+- **ASCII Art**: Enjoy retro text-based art and animations
+- **Art Gallery**: View the Y2KAT collection of digital artifacts
+- **Hidden Features**: Discover secrets by using the Konami Code
+- **System Crash Simulation**: Experience Y2KAT's power to destabilize systems
 
 ## Commands
-
-The terminal accepts various commands including:
 
 - `help` - Display available commands
 - `whois Y2KAT` - Display Y2KAT information
@@ -24,49 +24,31 @@ The terminal accepts various commands including:
 - `show.collection()` - View the Y2KAT collection
 - `clear` - Clear the terminal
 
-## Technologies Used
+## Deployment
 
-- TypeScript
-- React
-- Tailwind CSS
-- Vite
-- Express
+The project is set up to be deployed to GitHub Pages automatically using GitHub Actions. When you push changes to the main branch, the site will be built and deployed automatically.
+
+### Manual Deployment
+
+If you prefer to deploy manually:
+
+1. Build the project with `npm run build`
+2. Copy the contents of the `public` directory to your web server
+3. Ensure all assets are properly referenced
 
 ## Local Development
 
-To run this project locally:
-
 1. Clone the repository
-   ```bash
-   git clone https://github.com/your-username/y2kat-terminal.git
-   cd y2kat-terminal
-   ```
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+4. Open your browser to `http://localhost:5000`
 
-2. Install dependencies
-   ```bash
-   npm install
-   ```
+## Secret Features
 
-3. Start the development server
-   ```bash
-   npm run dev
-   ```
+- Try using the Konami Code on the website (↑ ↑ ↓ ↓ ← → ← → B A)
+- Look for hidden messages in the terminal output
 
-4. Open your browser and navigate to `http://localhost:5000`
+## Credits
 
-## Deployment
-
-This project is set up for GitHub Pages deployment using GitHub Actions. Push changes to the main branch to trigger an automatic deployment.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- Inspired by Y2K aesthetics, glitch art, and terminal interfaces
-- Created with love for nostalgic computing experiences
-
----
-
-© 2000-2023 CHRONOCAT INDUSTRIES. ALL RIGHTS RESERVED & SOME RIGHTS CORRUPTED
+- Y2KAT pixel art and concept by ChronoCat Industries
+- Created with love during the millennium transition
