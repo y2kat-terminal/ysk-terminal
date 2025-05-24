@@ -1,19 +1,19 @@
-# Y2KAT - Retro-Futurist Terminal Experience
+# Y2KAT Terminal Experience
 
 A retro-futuristic, terminal-based web experience featuring Y2KAT with glitch aesthetics, interactive commands, and hidden features.
 
-## Overview
+## About Y2KAT
 
-Y2KAT is a digital entity that emerged during the Y2K transition. This interactive terminal experience allows you to communicate with Y2KAT and discover its secrets through various commands and hidden features.
+Y2KAT is a digital entity that emerged during the Y2K transition. Part cat, part chronological glitch, Y2KAT exists between the digital and physical realms, corrupting systems and timelines for its own amusement.
 
 ## Features
 
-- **Boot Animation**: Experience the Y2K-era cyberpunk boot sequence
-- **Interactive Terminal**: Type commands to interact with Y2KAT
-- **ASCII Art**: Enjoy retro text-based art and animations
-- **Art Gallery**: View the Y2KAT collection of digital artifacts
-- **Hidden Features**: Discover secrets by using the Konami Code
-- **System Crash Simulation**: Experience Y2KAT's power to destabilize systems
+- Retro-futurist boot screen with glitch animations
+- Interactive terminal with command-line interface
+- ASCII art and glitch aesthetics
+- Hidden features (try the Konami Code: ↑ ↑ ↓ ↓ ← → ← → B A)
+- Art gallery showcasing Y2KAT's digital manifestations
+- System crash simulation
 
 ## Commands
 
@@ -24,31 +24,33 @@ Y2KAT is a digital entity that emerged during the Y2K transition. This interacti
 - `show.collection()` - View the Y2KAT collection
 - `clear` - Clear the terminal
 
-## Deployment
+## GitHub Pages Deployment
 
-The project is set up to be deployed to GitHub Pages automatically using GitHub Actions. When you push changes to the main branch, the site will be built and deployed automatically.
+This project is set up to be deployed to GitHub Pages. To deploy:
 
-### Manual Deployment
+1. Fork this repository
+2. Go to Settings > Pages in your forked repository
+3. In the "Source" section, select "GitHub Actions" as the deployment source
+4. The GitHub Actions workflow will automatically build and deploy the site when you push to the main branch
 
-If you prefer to deploy manually:
-
-1. Build the project with `npm run build`
-2. Copy the contents of the `public` directory to your web server
-3. Ensure all assets are properly referenced
+You can then access your site at `https://yourusername.github.io/repository-name/`
 
 ## Local Development
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Start the development server: `npm run dev`
-4. Open your browser to `http://localhost:5000`
+To run the project locally:
 
-## Secret Features
+1. Clone this repository
+2. Install dependencies with `npm install`
+3. Start the development server with `npm run dev`
+4. Open your browser to the URL shown in the terminal
 
-- Try using the Konami Code on the website (↑ ↑ ↓ ↓ ← → ← → B A)
-- Look for hidden messages in the terminal output
+## Technologies
 
-## Credits
+- HTML/CSS/JavaScript
+- Tailwind CSS
+- React
+- Vite
 
-- Y2KAT pixel art and concept by ChronoCat Industries
-- Created with love during the millennium transition
+## License
+
+© 2000-2023 CHRONOCAT INDUSTRIES. ALL RIGHTS RESERVED & SOME RIGHTS CORRUPTED.
