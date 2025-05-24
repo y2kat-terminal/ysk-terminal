@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 120 100% 50%;
+    --card: 0 0% 0%;
+    --card-foreground: 120 100% 50%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 120 100% 50%;
+    --primary: 300 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 67%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 67%;
+    --muted-foreground: 0 0% 80%;
+    --accent: 0 0% 67%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 0%;
+    --border: 120 100% 50%;
+    --input: 120 100% 50%;
+    --ring: 120 100% 50%;
+    --radius: 0.5rem;
+
+    --terminal-black: 0 0% 0%;
+    --terminal-green: 120 100% 50%;
+    --terminal-pink: 300 100% 50%;
+    --terminal-gray: 0 0% 67%;
+    --terminal-white: 0 0% 80%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-terminal-black text-terminal-green font-vt323 overflow-x-hidden;
+  }
+  
+  /* Font classes */
+  .font-vt323 {
+    font-family: 'VT323', monospace;
+  }
+  
+  .font-ibm {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+/* CRT Effect */
+.crt::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Scanline Effect */
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 255, 0, 0.1), transparent);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Typing Animation */
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Blinking cursor */
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Glitch effects */
+.glitch-text {
+  position: relative;
+  animation: glitch 500ms linear infinite;
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  33% {
+    transform: translate(-5px, 2px);
+  }
+  66% {
+    transform: translate(5px, -2px);
+  }
+}
+
+/* Command Line Styles */
+.command-line {
+  position: relative;
+}
+
+.command-line::before {
+  content: ">";
+  margin-right: 8px;
+}
+
+/* ASCII Art */
+.ascii-art {
+  white-space: pre;
+  line-height: 1;
+  text-align: left;
+}
+
+/* Gallery Scrollbar */
+.gallery-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.gallery-container::-webkit-scrollbar-track {
+  background: hsl(var(--terminal-black));
+  border: 1px solid hsl(var(--terminal-green));
+}
+
+.gallery-container::-webkit-scrollbar-thumb {
+  background: hsl(var(--terminal-green));
+}
+
+/* Hidden Konami Code Elements */
+.hidden-content {
+  display: none;
+}
